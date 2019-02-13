@@ -1,21 +1,25 @@
+// import { TSInterfaceBody } from "babel-types";
+
 const appRoot = document.getElementById("root");
 const fetcher = document.getElementById("fetcher");
 fetcher.addEventListener("click", fetchImages);
 
 function fetchImages() {
-  fetch("/api").then(data => {
-    processImages(data.imageList);
-  });
+  fetch("/api")
+    .then(response => response.json())
+    .then(data => {
+      processImages(data.images);
+    });
 }
 
 function processImages(images) {
   const list = document.createElement("ul");
   images.forEach(element => {
     // Create elements
+    const image = new Image();
     const item = document.createElement("li");
     const title = document.createElement("h2");
     const author = document.createElement("span");
-    const image = new Image();
 
     // Style elements
     item.classList.add("debug-card");
@@ -23,8 +27,8 @@ function processImages(images) {
     author.classList.add("debug-author");
 
     // Populate elements
-    title.innerText = element.photographer;
-    author.innerText = ` by ${element.title}`;
+    title.innerText = element.name;
+    author.innerText = ` by ${element.photographer}`;
     image.src = element.source;
 
     // Append elements
@@ -33,4 +37,6 @@ function processImages(images) {
     item.appendChild(image);
     list.appendChild(item);
   });
+
+  document.body.appendChild(list);
 }

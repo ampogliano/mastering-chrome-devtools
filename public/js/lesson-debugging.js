@@ -1,7 +1,8 @@
 function one() {
-  debugger;
   console.log("Hello from function one!");
   two();
+  let thisVarIsUseless = "hidden strings";
+  let thisVarIsAlsoUseless = 12345;
   three();
 }
 

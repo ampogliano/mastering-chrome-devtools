@@ -9,6 +9,7 @@ body {
   font-weight: 400;
   line-height: 30.5px;
   min-height: 100%;
+  background-color: hsl(0, 0%, 93.3%);
 }
 
 a {
@@ -63,6 +64,14 @@ img {
 .nav .logo {
   font-weight: bold;
   font-size: 22px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+#list li {
+  list-style: none;
 }
 
 /* Editing */
